@@ -375,7 +375,7 @@ class Params {
             "1200",
             "1250"
         };
-        default = 300;
+        default = 400;
     };
     class Max_Act_Gzones //17
     {
@@ -428,7 +428,7 @@ class Params {
             "300",
             "1000"
         };
-        default = 30;
+        default = 40;
     };
     class DeAct_Gzone_delay //18
     {
@@ -450,6 +450,7 @@ class Params {
             18,
             20,
             30,
+            3600,
             86400
         };
         texts[] = {
@@ -469,6 +470,7 @@ class Params {
             "18 minutes",
             "20 minutes",
             "30 minutes",
+            "1 heure",
             "24 heures"
         };
         default = 0.5;
