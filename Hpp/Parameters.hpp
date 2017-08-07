@@ -375,7 +375,7 @@ class Params {
             "1200",
             "1250"
         };
-        default = 800;
+        default = 300;
     };
     class Max_Act_Gzones //17
     {
@@ -428,7 +428,7 @@ class Params {
             "300",
             "1000"
         };
-        default = 15;
+        default = 30;
     };
     class DeAct_Gzone_delay //18
     {
@@ -449,7 +449,8 @@ class Params {
             16,
             18,
             20,
-            30
+            30,
+            86400
         };
         texts[] = {
             "Disabled",
@@ -467,9 +468,10 @@ class Params {
             "16 minutes",
             "18 minutes",
             "20 minutes",
-            "30 minutes"
+            "30 minutes",
+            "24 heures"
         };
-        default = 0;
+        default = 0.5;
     };
     class EnableEnemyAir //19
     {

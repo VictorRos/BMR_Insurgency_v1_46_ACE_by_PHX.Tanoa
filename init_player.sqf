@@ -79,125 +79,28 @@ if (DebugEnabled > 0) then {
 
     // Object Actions //
 
-    // Base Flag Pole
-    if (INS_op_faction isEqualTo 16) then {
-        INS_flag addAction[("<t size='1.5' shadow='2' color='#ff9900'>") + (localize "STR_BMR_halo_jump") + "</t>","scripts\HALO_Pod.sqf", 0, 3.9];
-        if (max_ai_recruits > 1) then {
-            INS_flag addAction[("<t size='1.5' shadow='2' color='#ff9900'>") + (localize "STR_BMR_ai_halo_jump") + "</t>","scripts\HALO_Pod.sqf", 1, 3.8];
-            INS_flag addAction[("<t size='1.5' shadow='2' color='#ff9900'>") + "Player and AI HALO" + "</t>","scripts\HALO_Pod.sqf", 2, 3.79];
-        };
-    }else{
-        INS_flag addAction[("<t size='1.5' shadow='2' color='#ff9900'>") + (localize "STR_BMR_halo_jump") + "</t>","ATM_airdrop\atm_airdrop.sqf", nil, 3.9];
-        if (max_ai_recruits > 1) then {INS_flag addAction[("<t size='1.5' shadow='2' color='#ff9900'>") + (localize "STR_BMR_ai_halo_jump") + "</t>","scripts\INS_AI_Halo.sqf", nil, 3.8];};
-    };
-
     // Initialisation des drapeaux
-    //call PHX_init_INS_flag_Base;
-    //call PHX_init_INS_flag_Aeroport;
-    //call PHX_init_INS_flag_Port;
-    //call PHX_init_INS_flag_Rochelle;
-    //call PHX_init_INS_flag_Saint_Georges;
-    //call PHX_init_INS_flag_Tanoa;
-    //call PHX_init_INS_flag_Bala;
-
-    if (INS_MHQ_enabled) then {
-        INS_flag addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 1</t>", "call JIG_transfer_fnc", ["MHQ_1"], 4.2];
-        INS_flag addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 2</t>", "call JIG_transfer_fnc", ["MHQ_2"], 4.1];    
-        INS_flag addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 3</t>", "call JIG_transfer_fnc", ["MHQ_3"], 4];
-    };
-    INS_flag addAction["<t size='1.5' shadow='2' color='#12F905'>Aéroport Base</t>", "call JIG_transfer_fnc", [INS_flag_Aeroport], 3.7];
-    INS_flag addAction["<t size='1.5' shadow='2' color='#12F905'>Port</t>", "call JIG_transfer_fnc", [INS_flag_Port], 3.6];
-
-    if (INS_MHQ_enabled) then {
-        INS_flag_Aeroport addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 1</t>", "call JIG_transfer_fnc", ["MHQ_1"], 4.2];
-        INS_flag_Aeroport addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 2</t>", "call JIG_transfer_fnc", ["MHQ_2"], 4.1];
-        INS_flag_Aeroport addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 3</t>", "call JIG_transfer_fnc", ["MHQ_3"], 4];
-    };
-    INS_flag_Aeroport addAction[("<t size='1.5' shadow='2' color='#FF9900'>") + (localize "STR_BMR_halo_jump") + "</t>","ATM_airdrop\atm_airdrop.sqf", nil, 3.9];
-    INS_flag_Aeroport addAction["<t size='1.5' shadow='2' color='#12F905'>Base</t>", "call JIG_transfer_fnc", [INS_flag], 3.8];
-    INS_flag_Aeroport addAction["<t size='1.5' shadow='2' color='#12F905'>Port</t>", "call JIG_transfer_fnc", [INS_flag_Port], 3.6];
-
-    if (INS_MHQ_enabled) then {
-        INS_flag_Port addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 1</t>", "call JIG_transfer_fnc", ["MHQ_1"], 4.2];
-        INS_flag_Port addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 2</t>", "call JIG_transfer_fnc", ["MHQ_2"], 4.1];
-        INS_flag_Port addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 3</t>", "call JIG_transfer_fnc", ["MHQ_3"], 4];
-    };
-    INS_flag_Port addAction[("<t size='1.5' shadow='2' color='#FF9900'>") + (localize "STR_BMR_halo_jump") + "</t>","ATM_airdrop\atm_airdrop.sqf", nil, 3.9];
-    INS_flag_Port addAction["<t size='1.5' shadow='2' color='#12F905'>Base</t>", "call JIG_transfer_fnc", [INS_flag], 3.8];
-    INS_flag_Port addAction["<t size='1.5' shadow='2' color='#12F905'>Aéroport Base</t>", "call JIG_transfer_fnc", [INS_flag_Aeroport], 3.7];
-
-    if (INS_MHQ_enabled) then {
-        INS_flag_Rochelle addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 1</t>", "call JIG_transfer_fnc", ["MHQ_1"], 4.2];
-        INS_flag_Rochelle addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 2</t>", "call JIG_transfer_fnc", ["MHQ_2"], 4.1];
-        INS_flag_Rochelle addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 3</t>", "call JIG_transfer_fnc", ["MHQ_3"], 4];
-    };
-    INS_flag_Rochelle addAction[("<t size='1.5' shadow='2' color='#FF9900'>") + (localize "STR_BMR_halo_jump") + "</t>","ATM_airdrop\atm_airdrop.sqf", nil, 3.9];
-    INS_flag_Rochelle addAction["<t size='1.5' shadow='2' color='#12F905'>Base</t>", "call JIG_transfer_fnc", [INS_flag], 3.8];
-    INS_flag_Rochelle addAction["<t size='1.5' shadow='2' color='#12F905'>Aéroport Base</t>", "call JIG_transfer_fnc", [INS_flag_Aeroport], 3.7];
-    INS_flag_Rochelle addAction["<t size='1.5' shadow='2' color='#12F905'>Port</t>", "call JIG_transfer_fnc", [INS_flag_Port], 3.6];
-
-    if (INS_MHQ_enabled) then {
-        INS_flag_Saint_Georges addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 1</t>", "call JIG_transfer_fnc", ["MHQ_1"], 4.2];
-        INS_flag_Saint_Georges addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 2</t>", "call JIG_transfer_fnc", ["MHQ_2"], 4.1];
-        INS_flag_Saint_Georges addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 3</t>", "call JIG_transfer_fnc", ["MHQ_3"], 4];
-    };
-    INS_flag_Saint_Georges addAction[("<t size='1.5' shadow='2' color='#FF9900'>") + (localize "STR_BMR_halo_jump") + "</t>","ATM_airdrop\atm_airdrop.sqf", nil, 3.9];
-    INS_flag_Saint_Georges addAction["<t size='1.5' shadow='2' color='#12F905'>Base</t>", "call JIG_transfer_fnc", [INS_flag], 3.8];
-    INS_flag_Saint_Georges addAction["<t size='1.5' shadow='2' color='#12F905'>Aéroport Base</t>", "call JIG_transfer_fnc", [INS_flag_Aeroport], 3.7];
-    INS_flag_Saint_Georges addAction["<t size='1.5' shadow='2' color='#12F905'>Port</t>", "call JIG_transfer_fnc", [INS_flag_Port], 3.6];
-
-    if (INS_MHQ_enabled) then {
-        INS_flag_Tanoa addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 1</t>", "call JIG_transfer_fnc", ["MHQ_1"], 4.2];
-        INS_flag_Tanoa addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 2</t>", "call JIG_transfer_fnc", ["MHQ_2"], 4.1];
-        INS_flag_Tanoa addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 3</t>", "call JIG_transfer_fnc", ["MHQ_3"], 4];
-    };
-    INS_flag_Tanoa addAction[("<t size='1.5' shadow='2' color='#FF9900'>") + (localize "STR_BMR_halo_jump") + "</t>","ATM_airdrop\atm_airdrop.sqf", nil, 3.9];
-    INS_flag_Tanoa addAction["<t size='1.5' shadow='2' color='#12F905'>Base</t>", "call JIG_transfer_fnc", [INS_flag], 3.8];
-    INS_flag_Tanoa addAction["<t size='1.5' shadow='2' color='#12F905'>Aéroport Base</t>", "call JIG_transfer_fnc", [INS_flag_Aeroport], 3.7];
-    INS_flag_Tanoa addAction["<t size='1.5' shadow='2' color='#12F905'>Port</t>", "call JIG_transfer_fnc", [INS_flag_Port], 3.6];
-
-    if (INS_MHQ_enabled) then {
-        INS_flag_Bala addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 1</t>", "call JIG_transfer_fnc", ["MHQ_1"], 4.2];
-        INS_flag_Bala addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 2</t>", "call JIG_transfer_fnc", ["MHQ_2"], 4.1];
-        INS_flag_Bala addAction["<t size='1.5' shadow='2' color='#ED2744'>Transfert vers MHQ 3</t>", "call JIG_transfer_fnc", ["MHQ_3"], 4];
-    };
-    INS_flag_Bala addAction[("<t size='1.5' shadow='2' color='#FF9900'>") + (localize "STR_BMR_halo_jump") + "</t>","ATM_airdrop\atm_airdrop.sqf", nil, 3.9];
-    INS_flag_Bala addAction["<t size='1.5' shadow='2' color='#12F905'>Base</t>", "call JIG_transfer_fnc", [INS_flag], 3.8];
-    INS_flag_Bala addAction["<t size='1.5' shadow='2' color='#12F905'>Aéroport Base</t>", "call JIG_transfer_fnc", [INS_flag_Aeroport], 3.7];
-    INS_flag_Bala addAction["<t size='1.5' shadow='2' color='#12F905'>Port</t>", "call JIG_transfer_fnc", [INS_flag_Port], 3.6];
+    call INS_init_flag_Base;
+    call INS_init_flag_Aeroport;
+    call INS_init_flag_Port;
+    call INS_init_flag_Rochelle;
+    call INS_init_flag_Saint_Georges;
+    call INS_init_flag_Tanoa;
+    call INS_init_flag_Bala;
 
     // Virtual Arsenal
     INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#ff1111'>") + (localize "STR_BMR_open_VA") + "</t>",{["Open",true] call BIS_fnc_arsenal;}];
-    //INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#00ffe9'>") + (localize "STR_BMR_load_VAprofile") + "</t>","=BTC=_revive\=BTC=_addAction.sqf",[[],JIG_load_VA_profile], 1, true, true, "", "true"];
-    //MHQ_1 addAction[("<t color='#F56618'>") + (localize "STR_BMR_load_VAprofile") + "</t>","=BTC=_revive\=BTC=_addAction.sqf",[[],JIG_load_VA_profile_MHQ1], 1, true, true, "", "side _this != EAST"];
-    //MHQ_2 addAction[("<t color='#F56618'>") + (localize "STR_BMR_load_VAprofile") + "</t>","=BTC=_revive\=BTC=_addAction.sqf",[[],JIG_load_VA_profile_MHQ2], 1, true, true, "", "side _this != EAST"];
-    //MHQ_3 addAction[("<t color='#F56618'>") + (localize "STR_BMR_load_VAprofile") + "</t>","=BTC=_revive\=BTC=_addAction.sqf",[[],JIG_load_VA_profile_MHQ3], 1, true, true, "", "side _this != EAST"];
 
     // Blufor save respawn loadout
     if (INS_full_loadout isEqualTo 1) then {
         INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#ff9207'>") + (localize "STR_BMR_save_loadout") + "</t>", {call INS_RespawnLoadout}, [], 1, false, true, "", "side _this != EAST"];
     };
 
-    // Op4 MHQ
-    Opfor_MHQ addAction[("<t color=""#12F905"">") + ("Deploy MHQ") + "</t>","scripts\deployOpforMHQ.sqf",nil,1, false, true, "", "side _this != INS_Blu_side"];
-
-    // Op4 Weapon Box
-    //INS_weps_Cbox addAction[("<t size='1.5' shadow='2' color='#ff1111'>") + (localize "STR_BMR_open_VA") + "</t>",{["Open",true] call BIS_fnc_arsenal;}];// uncomment to allow Op4 access to Virtual Arsenal.
-    //INS_weps_Cbox addAction[("<t size='1.5' shadow='2' color='#ff9207'>") + (localize "STR_BMR_save_loadout") + "</t>",{call INS_RespawnLoadout}, [], 1, false, true, "", "side _this != INS_Blu_side"];
-    //INS_weps_Cbox addAction[("<t size='1.5' shadow='2' color='#ff1111'>") + (localize "STR_BMR_load_saved_loadout") + "</t>",{(_this select 1) call INS_RestoreLoadout},nil,1, false, true, "", "side _this != INS_Blu_side"];
-    //INS_weps_Cbox addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_restore_default_loadout") + "</t>",{call Op4_restore_loadout},nil,1, false, true, "", "side _this != INS_Blu_side"];
-
     // Ear Plugs
     if !(INS_ACE_core) then {
         INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_earPlugs") + "</t>", { if (soundVolume isEqualTo 1) then {1 fadeSound 0.5; hintSilent localize "STR_BMR_ON";} else {1 fadeSound 1; hintSilent localize "STR_BMR_OFF";} }, [], 1];
         INS_weps_Cbox addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_earPlugs") + "</t>", { if (soundVolume isEqualTo 1) then {1 fadeSound 0.5; hintSilent localize "STR_BMR_ON";} else {1 fadeSound 1; hintSilent localize "STR_BMR_OFF";} } ,nil,1, false, true, "", "side _this != INS_Blu_side"];
     };
-
-    // AI recruitment
-    //if (max_ai_recruits > 1) then {INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#1d78ed'>") + (localize "STR_BMR_recruit_inf") + "</t>","bon_recruit_units\open_dialog.sqf", [], 1];};
-
-    // Loadout Transfer
-    //[INS_Wep_box,true,false,false,false,false] call LT_fnc_LTaction;// not working correctly anymore
 
     // Player actions for Engineer's Farp/vehicle service point
     Jig_m_obj addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_maintenance_veh") + "</t>","=BTC=_revive\=BTC=_addAction.sqf",[[],INS_maintenance_veh], 8, true, true, "", "count (nearestObjects [_this, [""LandVehicle"",""Air""], 10]) > 0"];

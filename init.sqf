@@ -244,7 +244,7 @@ if (!isDedicated && hasInterface) then
 		waitUntil {!isNull player && player == player};
 		if (DebugEnabled isEqualTo 0) then {["BIS_ScreenSetup", false] call BIS_fnc_blackOut;};
 		call compile preprocessFile "INSfncs\client_fncs.sqf";
-        //call compile preprocessFile "phx_fncs.sqf";
+        call compile preprocessFile "phx_fncs.sqf";
 		call compile preprocessFile "ATM_airdrop\functions.sqf";
 
 		player sideChat localize "STR_BMR_loading";
