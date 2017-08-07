@@ -33,7 +33,7 @@ if (isServer) then {
     sleep (random 1);
     While {True} Do {
         sleep 1;
-        // Vérification sur le délai d'abandon à zéro qui empêche de considérer le véhicule comme abandonné
+        // Modification de la condition : un délai d'abandon à zéro empêche de considérer le véhicule comme abandonné
         if (!(_abandonDelay isEqualTo 0) && (alive _veh) && {canMove _veh} && {{alive _x} count crew _veh isEqualTo 0}) then {
             _abandoned = true;
 
@@ -56,8 +56,11 @@ if (isServer) then {
                 _veh call _vehInit;
             };
         };
-
-        if ((!alive _veh) || (!canMove _veh)) then {
+        
+        // Modification de la condition : Un véhicule est considéré détruit uniquement lorsqu'il est détruit
+        // Si le véhicule est simplement abîmé, on ne le considère plus comme détruit
+        //if ((!alive _veh) || (!canMove _veh)) then {
+        if (!alive _veh) then {
             _dead = true;
 
             for "_i" from 0 to _deadDelay do {
