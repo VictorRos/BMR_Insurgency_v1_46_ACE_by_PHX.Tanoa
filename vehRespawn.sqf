@@ -19,6 +19,7 @@ _nul = [this, 2, 1, {}] execVM "vehrespawn.sqf"; << 2 minute abandoned delay, 1 
 ---------------------------------------------------------------------------------------------------- */
 
 private ["_veh","_abandonDelay","_deadDelay","_vehInit","_dir","_vehPos","_vehtype","_vehName"];
+private ["_backpackCargo","_itemCargo","_magazineCargo","_weaponCargo"];
 
 _veh = _this select 0;
 _abandonDelay = (_this select 1) * 60;
@@ -43,16 +44,45 @@ if (isServer) then {
             };
 
             if ((_abandoned) && {_veh distance _vehPos > 10}) then {
+                // Sauvegarde de l'équipement du véhicule
+//                _backpackCargo = getBackpackCargo _veh;
+//                _itemCargo     = getItemCargo _veh;
+//                _magazineCargo = getMagazineCargo _veh;
+//                _weaponCargo   = getWeaponCargo _veh;
+
                 deleteVehicle _veh;
                 sleep 1;
 
                 _veh = createVehicle [_vehtype, _vehPos, [], 0, "CAN_COLLIDE"];
                 _veh setDir _dir;
                 _veh setPos [_vehPos select 0, _vehPos select 1,0];
+
+                // Suppression de l'équipement de base des véhicules
+                _veh call INS_clear_cargo;
+//                clearBackpackCargo _veh;
+//                clearItemCargo _veh;
+//                clearMagazineCargo _veh;
+//                clearWeaponCargo _veh;
+
                 if !(_vehName isEqualTo "") then {
                     missionNamespace setVariable [_vehName, _veh];
                     publicVariable _vehName;
                 };
+
+                // On restitue l'équipement qu'avait le véhicule lorsqu'il a été abandonné
+//                {
+//                    _veh addBackpackCargo [_x, (_backpackCargo select 1) select _forEachIndex];
+//                } foreach (_backpackCargo select 0);
+//                {
+//                    _veh addItemCargo [_x, (_itemCargo select 1) select _forEachIndex];
+//                } foreach (_itemCargo select 0);
+//                {
+//                    _veh addMagazineCargo [_x, (_magazineCargo select 1) select _forEachIndex];
+//                } foreach (_magazineCargo select 0);
+//                {
+//                    _veh addWeaponCargo [_x, (_weaponCargo select 1) select _forEachIndex];
+//                } foreach (_weaponCargo select 0);
+
                 _veh call _vehInit;
             };
         };
@@ -69,16 +99,45 @@ if (isServer) then {
             };
 
             if (_dead) then {
+                // Sauvegarde de l'équipement du véhicule
+//                _backpackCargo = getBackpackCargo _veh;
+//                _itemCargo     = getItemCargo _veh;
+//                _magazineCargo = getMagazineCargo _veh;
+//                _weaponCargo   = getWeaponCargo _veh;
+
                 deleteVehicle _veh;
                 sleep 1;
 
                 _veh = createVehicle [_vehtype, _vehPos, [], 0, "CAN_COLLIDE"];
                 _veh setDir _dir;
                 _veh setPos [_vehPos select 0, _vehPos select 1,0];
+
+                // Suppression de l'équipement de base des véhicules
+                _veh call INS_clear_cargo;
+//                clearBackpackCargo _veh;
+//                clearItemCargo _veh;
+//                clearMagazineCargo _veh;
+//                clearWeaponCargo _veh;
+
                 if !(_vehName isEqualTo "") then {
                     missionNamespace setVariable [_vehName, _veh];
                     publicVariable _vehName;
                 };
+
+                // On restitue l'équipement qu'avait le véhicule lorsqu'il a été détruit
+//                {
+//                    _veh addBackpackCargo [_x, (_backpackCargo select 1) select _forEachIndex];
+//                } foreach (_backpackCargo select 0);
+//                {
+//                    _veh addItemCargo [_x, (_itemCargo select 1) select _forEachIndex];
+//                } foreach (_itemCargo select 0);
+//                {
+//                    _veh addMagazineCargo [_x, (_magazineCargo select 1) select _forEachIndex];
+//                } foreach (_magazineCargo select 0);
+//                {
+//                    _veh addWeaponCargo [_x, (_weaponCargo select 1) select _forEachIndex];
+//                } foreach (_weaponCargo select 0);
+
                 _veh call _vehInit;
             };
         };
