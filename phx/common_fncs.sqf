@@ -7,5 +7,6 @@ INS_clear_cargo = {
 
 INS_init_ammo_supply = {
     _this call INS_clear_cargo;
-    _this addAction["Arsenal", {["Open",true] call BIS_fnc_arsenal;}];
+    _this addAction["Arsenal", { ["Open",true] call BIS_fnc_arsenal; }];
+    hint "Caisse de réapprovisionnement larguée sur zone !";
 };
