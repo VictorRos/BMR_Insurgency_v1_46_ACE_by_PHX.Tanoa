@@ -89,18 +89,18 @@ if (DebugEnabled > 0) then {
     call INS_init_flag_Bala;
 
     // Virtual Arsenal
-    INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#ff1111'>") + (localize "STR_BMR_open_VA") + "</t>",{["Open",true] call BIS_fnc_arsenal;}];
+//    INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#ff1111'>") + (localize "STR_BMR_open_VA") + "</t>",{["Open",true] call BIS_fnc_arsenal;}];
 
     // Blufor save respawn loadout
-    if (INS_full_loadout isEqualTo 1) then {
-        INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#ff9207'>") + (localize "STR_BMR_save_loadout") + "</t>", {call INS_RespawnLoadout}, [], 1, false, true, "", "side _this != EAST"];
-    };
+//    if (INS_full_loadout isEqualTo 1) then {
+//        INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#ff9207'>") + (localize "STR_BMR_save_loadout") + "</t>", {call INS_RespawnLoadout}, [], 1, false, true, "", "side _this != EAST"];
+//    };
 
     // Ear Plugs
-    if !(INS_ACE_core) then {
-        INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_earPlugs") + "</t>", { if (soundVolume isEqualTo 1) then {1 fadeSound 0.5; hintSilent localize "STR_BMR_ON";} else {1 fadeSound 1; hintSilent localize "STR_BMR_OFF";} }, [], 1];
-        INS_weps_Cbox addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_earPlugs") + "</t>", { if (soundVolume isEqualTo 1) then {1 fadeSound 0.5; hintSilent localize "STR_BMR_ON";} else {1 fadeSound 1; hintSilent localize "STR_BMR_OFF";} } ,nil,1, false, true, "", "side _this != INS_Blu_side"];
-    };
+//    if !(INS_ACE_core) then {
+//        INS_Wep_box addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_earPlugs") + "</t>", { if (soundVolume isEqualTo 1) then {1 fadeSound 0.5; hintSilent localize "STR_BMR_ON";} else {1 fadeSound 1; hintSilent localize "STR_BMR_OFF";} }, [], 1];
+//        INS_weps_Cbox addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_earPlugs") + "</t>", { if (soundVolume isEqualTo 1) then {1 fadeSound 0.5; hintSilent localize "STR_BMR_ON";} else {1 fadeSound 1; hintSilent localize "STR_BMR_OFF";} } ,nil,1, false, true, "", "side _this != INS_Blu_side"];
+//    };
 
     // Player actions for Engineer's Farp/vehicle service point
     Jig_m_obj addAction[("<t size='1.5' shadow='2' color='#12F905'>") + (localize "STR_BMR_maintenance_veh") + "</t>","=BTC=_revive\=BTC=_addAction.sqf",[[],INS_maintenance_veh], 8, true, true, "", "count (nearestObjects [_this, [""LandVehicle"",""Air""], 10]) > 0"];
